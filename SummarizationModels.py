@@ -4,8 +4,11 @@ import os
 from tenacity import retry, stop_after_attempt, wait_random_exponential
 from transformers import AutoTokenizer, AutoModelWithLMHead
 from abc import ABC, abstractmethod
-
+from dotenv import load_dotenv
 logging.basicConfig(format="%(asctime)s - %(message)s", level=logging.INFO)
+
+# Load environment variables from .env file
+load_dotenv()
 
 class BaseSummarizationModel(ABC):
     @abstractmethod

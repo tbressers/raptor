@@ -6,6 +6,9 @@ from .QAModels import BaseQAModel, GPT3TurboQAModel
 from .tree_structures import Tree, Node
 from .cluster_tree_builder import ClusterTreeConfig, ClusterTreeBuilder
 
+
+
+
 # Define a dictionary to map supported tree builders to their respective configs
 supported_tree_builders = {
     "default": (TreeBuilder, TreeBuilderConfig),
@@ -106,7 +109,7 @@ class RetrievalAugmentation:
         if self.tree is not None:
             user_input = input("Warning: Overwriting existing tree. Did you mean to call 'add_to_existing' instead? (y/n): ")
             if user_input.lower() == 'y':
-                #self.add_to_existing(docs)
+                self.add_to_existing(docs)
                 return
 
         logging.info(f"NARRQA RAPTOR")
@@ -162,3 +165,25 @@ class RetrievalAugmentation:
             return answer, layer_information
             
         return answer
+    
+
+# Your docs for Input to RAG
+docs="Your docs is here and it will be in string "
+
+# Create the instance of RetrievalAugmentaion
+retrieval_augmentation_instance = RetrievalAugmentation()    
+
+# Calling the add_documents and also passing the docs to it 
+retrieval_augmentation_instance.add_documents(docs)
+
+
+# Declare variable for question 
+question = "Your question here."
+
+#call the answer question method 
+answer = retrieval_augmentation_instance.answer_question(question)
+
+#print the answer 
+print(answer)
+
+
