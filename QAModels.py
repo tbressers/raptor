@@ -6,6 +6,11 @@ from transformers import T5Tokenizer, T5ForConditionalGeneration
 from abc import ABC, abstractmethod
 import torch
 import getpass
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
 
 class BaseQAModel(ABC):
     @abstractmethod
